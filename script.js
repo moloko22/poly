@@ -128,22 +128,44 @@ Array.prototype.reduce1 = function(callback){
        element = callback(element, i)
     }
 };
-Array.prototype.sort1 = functin(){
 
-
-    return newArr;
-};
 
 Function.prototype.bind1 = function(){};
 
 
+function ololo(){
+    console.log(arguments);
+}
 
-Function.prototype.call1 = function(){};
+var obj = {
+};
+var a = "5";
+var b = "6";
+
+Function.prototype.call1 = function(context){
+    if(typeof this !== "function"){
+        for(var i = 0; i < arguments.length; i++){
+            arguments[i] = arguments[i+1];
+        }
+        arguments.length = arguments.length -1;
+        context.fn = this(arguments);
+        delete context.fn;
+    }
+};
 
 
-Function.prototype.apply1 = function(){};
+Function.prototype.apply1 = function(context, arr){
+    if(typeof this !== "function"){
+        context.fn = this(arguments[1]);
+        delete context.fn;
+    }
+};
+Function.prototype.bind1 = function(cont){
+    if(typeof this === "function" && cont === "cont"){
+        return this.bind1(cont, arguments);
+    }
+};
 
-// Array.sort
 
 
 
